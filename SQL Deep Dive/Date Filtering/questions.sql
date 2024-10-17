@@ -12,7 +12,9 @@ SELECT * FROM employees;
 * Question: How many employees where hired in February?
 */
 
-SELECT * FROM employees;
+SELECT * FROM orders
+WHERE orderdate >= '2004-01-01' 
+  AND orderdate < '2004-02-01';
 
 /*
 * DB: Employees
@@ -20,7 +22,9 @@ SELECT * FROM employees;
 * Question: How many employees were born in november?
 */
 
-SELECT * FROM employees;
+select TO_CHAR(hire_date, 'Month') AS hire_month, * from employees
+where TRIM(TO_CHAR(hire_date, 'Month')) = 'November';
+
 
 /*
 * DB: Employees
@@ -28,7 +32,7 @@ SELECT * FROM employees;
 * Question: Who is the oldest employee? (Use the analytical function MAX)
 */
 
-SELECT * FROM employees;
+SELECT max(age(birth_date)) FROM employees;
 
 /*
 * DB: Store
@@ -36,5 +40,6 @@ SELECT * FROM employees;
 * Question: How many orders were made in January 2004?
 */
 
-SELECT * FROM orders;
-
+SELECT * FROM orders
+WHERE orderdate >= '2004-01-01' 
+  AND orderdate < '2004-02-01';
